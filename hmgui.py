@@ -8,16 +8,16 @@ from PyQt5.QtGui import QIcon
 class MainWindow(QMainWindow):
     def __init__(self):  
         super().__init__()  
-        self.setWindowTitle("RPS") 
+        self.setWindowTitle("Hang man")
+        self.setWindowIcon(QIcon("icon.png"))
         self.setGeometry(600, 400, 900, 600)
         self.word = ["mango", "gorella" , "fucker"]
-        self.wrong_guesses = 0
-        self.answer = ""
+        self.wrong_guesses = 6
+        self.answer = "aaaaaaaaaaa"
         self.hint = ["_"]* len(self.answer)
 
-        self.l1 = QLabel(f"  {display_man(self.wrong_guesses,0)} \n  {display_man(self.wrong_guesses,1)} \n  {display_man(self.wrong_guesses,2)}" ,self)
-        self.l2 = QLabel(f" {display_hints(self.hint)}",self)
-        self.l3 = QLabel("",self)
+        self.l1 = QLabel(f" {display_man(self.wrong_guesses,0)} \n  {display_man(self.wrong_guesses,1)} \n  {display_man(self.wrong_guesses,2)}" ,self)
+        self.l2 = QLabel(f"{display_hints(self.hint)}",self)
         
         self.t = QLineEdit("",self)
         self.b = QPushButton("start", self)
@@ -26,9 +26,8 @@ class MainWindow(QMainWindow):
     def InitGUI(self):
         self.l1.setGeometry(0, 0, 900, 190)
         self.l2.setGeometry(0, 180, 900, 150)
-        self.l3.setGeometry(600, 400, 900, 600)
         self.b.setGeometry(300, 500, 200, 100)
-        self.t.setGeometry(150, 350, 400, 100)
+        self.t.setGeometry(200, 350, 400, 100)
        
         
 
@@ -37,13 +36,14 @@ class MainWindow(QMainWindow):
                             "Color : green")
         self.l2.setStyleSheet("font-size: 60px;"
                             "background-color: black;"
-                            "Color : green")
-        self.l3.setStyleSheet("font-size: 60px;"
-                            "background-color: black;"
-                            "Color : green")                      
+                            "Color : green")                     
         self.b.setStyleSheet("font-size: 20px;"
                             "background-color: silver;"
                             "Color : black")  
+
+        self.l1.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+        self.l2.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+        self.t.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
                          
 
