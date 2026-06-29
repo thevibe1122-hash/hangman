@@ -1,7 +1,7 @@
 from hangman import *
 import sys  
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel ,QPushButton,QLineEdit
-from PyQt5.QtCore import Qt,QTimer
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 
 
@@ -18,17 +18,20 @@ class MainWindow(QMainWindow):
 
         self.l1 = QLabel(f" {display_man(self.wrong_guesses,0)} \n  {display_man(self.wrong_guesses,1)} \n  {display_man(self.wrong_guesses,2)}" ,self)
         self.l2 = QLabel(f"{display_hints(self.hint)}",self)
+        self.l4 = QLabel("hang man",self)
         
         self.t = QLineEdit("",self)
         self.b = QPushButton("start", self)
         self.InitGUI()
 
     def InitGUI(self):
-        self.l1.setGeometry(0, 0, 900, 190)
-        self.l2.setGeometry(0, 180, 900, 150)
-        self.b.setGeometry(300, 500, 200, 100)
-        self.t.setGeometry(200, 350, 400, 100)
-       
+        self.l1.setGeometry(0, 100, 900, 190)
+        self.l2.setGeometry(0, 280, 900, 150)
+        self.l4.setGeometry(0, 0, 900, 100)
+
+        self.b.setGeometry(630, 440, 200, 100)
+        self.t.setGeometry(200, 440, 400, 100)
+        self.t.setMaxLength(1)
         
 
         self.l1.setStyleSheet("font-size: 60px;"
@@ -36,13 +39,22 @@ class MainWindow(QMainWindow):
                             "Color : green")
         self.l2.setStyleSheet("font-size: 60px;"
                             "background-color: black;"
-                            "Color : green")                     
+                            "Color : green")   
+        self.l4.setStyleSheet("font-size: 60px;"
+                            "background-color: silver;"
+                            "Color : black")                    
         self.b.setStyleSheet("font-size: 20px;"
                             "background-color: silver;"
                             "Color : black")  
+        self.t.setStyleSheet("font-size: 60px;"
+                            "background-color: silver;"
+                            "Color : black")  
+        
+        self.t.setEnabled(False)
 
         self.l1.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
         self.l2.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+        self.l4.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
         self.t.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
                          
